@@ -1,0 +1,341 @@
+9:00 AM - 5:00 PM IST
+============================
+Discussion --> Demo --> Lab --> Assignment
+-----------------------------------
+Lunch Break - 1 PM - 2:00 PM
+Break -> 15 mins 
+	11 AM
+	3.30 PM
+-------------------------
+LAB CLOUD
+-------------------------
+========================================================
+What is Docker?
+--------------------------
+	Container mgmt tool aka platform
+	Release
+		Community - FREE & OS
+		Enterprise - - FREE & OS & PAID Support
+	Version
+		20.x
+	Written in Golang
+	By Soloman Hykes
+	Called - "Docker Engine"
+
+
+	What is Tool?
+	- Reduce a Cost	
+		- WHILE RUNNING A APPS IN DATA CENTER
+	- Save time 
+		- For running APPS.
+		 FROM 1 DAY --> 5 MINS --> 1 SECOND
+	- Imp* Quality	
+		Save efforts during integration--> Leads for Quality work.
+	- Imp* Efficiency
+
+	What is Container?
+	------------------------
+	Lightweight, Independent APP Run time ENV.	
+
+
+	is a collection of 
+			USER 
+				attached to 1 ROOT FS
+					     1 NET
+						1 PID
+
+	What are the resources are needed to run 1 APP?	
+	---------------------------------------------
+	
+	HARDWARE
+	   	OS
+	     	  KERNAL
+			Login
+				USER 
+			      	ROOTFS
+				PID
+				NETWORK
+
+					PRE-REQ
+						APP
+					   		START
+	-----------------------------------------------
+	KERNAL
+		Namespace		NEED4APP	CAN			ALLOWED
+			USER NS		1		UNLIMITED		UNLIMITED
+			MNT NS		1		UNLIMITED		1
+			PID NS		1		UNLIMITED		1
+			NET NS		1		UNLIMITED		1
+		CGROUPS
+			Allocating CPU+RAM to PID ID
+		Capabilites
+			to decide user is root or not-root
+	
+		
+	
+
+	What is KERNEL?
+	The kernel is a computer program at the core of a computer's operating system and has complete 	control over everything in the system. 	
+
+
+	What is fileSystem?
+	--------------------
+	collection of files/dir for some purpose
+
+	Types of filesystem?
+	---------------------
+	BOOT FS -> ROOT FS --> USER FS --> APP FS	
+	(KERNEL)
+
+	LINUX-WINDOWS
+	----------------------------
+	PC
+
+	MEANING??? CONCLUSION???
+	-----------------------
+	WE ALL ARE USING PC ARCH to RUN DATA CENTER.
+		Results - WASTE OF RESOURCES
+					CPU
+					RAM
+					STOR
+					OS
+
+------------------------------EVOLUTION------------------------------------------------
+PHYSICAL			VIRTUALIZATION			container
+----------------------
+1 hour				5 mins				1 SEC
+==================================================
+Other tools - 
+https://www.devopsschool.com/blog/list-of-top-container-runtime-interface-projects/
+
+QA 
+-----
+
+
+Docker Architecture? or How Docker Works?
+===============================================
+
+Human -> Docker Client(docker) ----REST API --> Docker Server(dockerd) --> ContainerD ---> Kernal
+       ======================================================
+			Docker Engine
+
+Docker Components?
+- Docker Engine
+
+- Docker Image
+--------------------------------
+Container APP.
+
+Vm Image
+---------------
+BOOT FS -> ROOT FS --> USER FS --> APP FS	
+(KERNEL)
+
+Docker Image
+---------------
+ROOT FS --> USER FS --> APP FS	
+ubuntu   ---> root ---> bash
+ubuntu   ---> root ---> apache
+centos   ---> tomcat ---> java --> tomcat
+
+- Collection of filesystem.
+- ONE Copy of Docker image get attached to each Container
+- From one Image - you can get multiple Container
+
+- Docker Registry
+- A place where you host multiple docker image
+
+	Contains
+		- Repository
+		  contains
+			---- version file systems
+			ROOT FS --> USER FS --> APP FS
+			AKA 
+			docker image	
+	PUB
+		hub.docker.com
+		google registry
+
+	PVT
+		artifactory
+		nexus
+		docker registry
+
+- Docker Container
+
+Human -> RUN THIS IMAGE --> Client ---> Server
+				CHECK
+				IF IMAGE EXIST IN LOCAL REGISTRY 
+				YES
+				---> ContainerD -----> KERNAL
+						1 NET 
+						1 PID
+					    	1 ROOT FS from Image
+						& 
+						1 USER
+						ATTACH NET - PID - MNT to a USER
+					         -----------------------------
+								Container
+				NO
+				- DOWNLOAD FROM hub.docker.com to local and do the same.
+
+
+Docker workflow?
+DONE
+
+Vms LifeCycle?
+---------------------------------------
+create --> start -> stop -> start --> restart -> pause --> unpause -> kill -> remove
+
+
+Container LifeCycle?
+---------------------------------
+create --> start -> stop -> start --> restart -> pause --> unpause -> kill -> remove
+
+
+Installing a docker?
+65.0.3.5
+https://devopsschool.com/tutorial/docker/install-config/index.html
+
+  1  clear
+    2  ls
+    3  sudo apt-get update
+    4  sudo apt-get install     apt-transport-https     ca-certificates     curl     gnupg     lsb-release
+    5  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+    6  echo   "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    7  sudo apt-get update
+    8  clear
+    9  sudo apt-get install docker-ce docker-ce-cli containerd.io
+   10  clear
+   11  docker
+   12  clear
+   13  docker verison
+   14  docker version
+   15  clearclear
+   16  clear
+   17  clearclear
+   18  docker info
+   19  clear
+   20  ls
+   21  docker help
+   22  clear
+   23  ps -eaf | grep docker
+   24  history
+
+Container LifeCycle?
+---------------------------------
+create --> start -> stop -> start --> restart -> pause --> unpause -> kill -> remove
+
+ 25  clear
+   26  docker images
+   27  docker pull httpd
+   28  docker images
+   29  clear
+   30  docker ps
+   31  docker ps -a
+   32  docker create httpd
+   33  docker ps
+   34  docker ps -a
+   35  docker start 4247a48d8c30
+   36  docker ps
+   37  docker create --name raj1 httpd
+   38  docker ps
+   39  docker ps -a
+   40  docker create --name raj2 httpd
+   41  docker ps -a
+   42  clear
+   43  docker ps -a
+   44  docker start raj1
+   45  docker ps -a
+   46  docker stop raj1
+   47  docker ps -a
+   48  docker start raj1
+   49  docker ps -a
+   50  docker restart 4247a48d8c30
+   51  docker ps -a
+   52  clear
+   53  docker pause raj1
+   54  docker ps -a
+   55  docker unpause raj1
+   56  docker ps -a
+   57  docker kill 4247a48d8c30
+   58  docker ps -a
+   59  docker rm raj1
+   60  docker rm 4247a48d8c30
+   61  clear
+   62  history
+
+
+Container
+		1 ROOT
+		1 NET
+		1 PID
+		1 USER
+
+  66  ps
+   67  ps -eaf | grep 1459
+   68  ps -eaf | grep 1457
+   69  ps -eaf | grep 1399
+   70  ps -eaf | grep 1398
+   71  ps -eaf | grep 1282
+   72  ps -eaf | grep 739
+   73  clear
+   74  ps -eaf | grep 739
+   75  ps -eaf
+   76  clear
+   77  docker ps
+   78  ps -eaf | grep containerd
+   79  docker exec -it 797e8c71bba0 /bin/bash
+   80  clear
+   81  ls
+   82  docker ps
+   83  docker inspect 797e8c71bba0
+   84  clear
+   85  ls
+   86  docker run -itd ubuntu
+   87  clear
+   88  docker ps
+   89  docker exec 30daf8cff021 df -kh
+   90  docker exec 30daf8cff021 ps -eadf
+   91  docker inspect 30daf8cff021
+
+
+
+
+
+Lab Hours - 30 mins
+------------------
+
+
+Assignment for docker day 1 
+
+Time Allocation - 15 mins
+----------------------------
+Q1. Explain What is Docker Container with image?
+Q2. What is the differenece between docker stop and docker kill?
+Q3. What is the differenece between docker pause and docker unpause?
+
+# How to submit assignment? - 2 mins
+- Step - 1 - Register at this site - https://www.bestdevops.com/wp-login.php?action=register
+- Step - 2 - Login  - https://www.bestdevops.com/wp-login.php
+- Step 3 - Submit a assignment POST using 
+
+
+How to use a container?
+
+
+
+65.0.3.5
+ubuntu
+ubtunu
+
+
+
+
+
+
+
+
+
+
