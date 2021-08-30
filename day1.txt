@@ -328,7 +328,127 @@ How to use a container?
 
 65.0.3.5
 ubuntu
-ubtunu
+ubuntu123
+================================================================
+
+run
+---------------------------
+pull + create + start + Attached to the container(PID1) or BECOME A CONTAINER
+
+run -d
+---------------------------
+pull + create + start + DE-Attached to the container(PID1) or DO NOT BECOME A CONTAINER
+
+
+------------------------------------------------------------------------------------
+PHYSICAL SERVER 		Virtual Server			Container 
+is running			is running			is running 
+as long as			as long as			as long as
+PID 1 is runing.		PID 1 is runing.		PID 1 is runing.
+	
+PID1=SYSTEM			PID1=SYSTEM			PID1=ANYTHING
+								bash
+								java - python s
+
+How to consume or Use container?
+-----------------------------------
+GETINSIDE
+exec
+	this would execute an executables inside container
+	You can interact wth container using 
+	"exec" with "it" with "shell"
+	docker exec -it contid /bin/bash
+
+attach
+	you can attached to PID1
+	if PID1 is bash - yuu can work with it.
+
+
+How to come out of the container with exiting?
+- CONTROL + P + Q
+
+
+101  docker stop $(docker ps -a -q)
+  102  clear
+  103  docker rm $(docker ps -a -q)
+  104  clear
+  105  docker ps -a
+  106  ps
+  107  docker run httpd
+  108  clear
+  109  docker run -d httpd
+  110  docker ps
+  111  clear
+  112  docker run httpd
+  113  clear
+  114  l
+  115  ps -eaf
+  116  clear
+  117  docker ps
+  118  docker stop $(docker ps -a -q)
+  119  docker rm $(docker ps -a -q)
+  120  clear
+  121  docker run httpd
+  122  docker ps
+  123  docker ps -a
+  124  docker run -d httpd
+  125  docker exec -it c5c844a267e06c5cdcfda51dbbdcd554a70906ab6207334b4bf548a22b7c740c /bin/bash
+  126  docker ps
+  127  docker ps -a
+  128  clear
+  129  docker run ubuntu
+  130  docker ps -a
+  131  ls
+  132  ls &
+  133  clear
+  134  docker run ubuntu
+  135  docker ps -a
+  136  clear
+  137  docker ps
+  138  docker run -d httpd
+  139  docker ps
+  140  docker exec 94cabc518b57 ls
+  141  docker exec 94cabc518b57 df -kh
+  142  docker exec 94cabc518b57 du -sh
+  143  docker exec 94cabc518b57 ps
+  144  history
+  145  docker stop $(docker ps -a -q)
+  146  docker rm $(docker ps -a -q)
+  147  clear
+  148  docker ps -a
+  149  docker run ubuntu
+  150  docker ps -a
+  151  docker run -it ubuntu
+  152  docker ps -a
+  153  docker run -it ubuntu
+  154  docker ps
+  155  docker run -it ubuntu
+  156  docker ps
+  157  docker run -itd ubuntu
+  158  docker ps
+
+  182  docker ps
+  183  docker exec -it 94cabc518b57 /bin/bash
+  184  docker ps
+  185  docker attach 94cabc518b57
+
+ACCESS FROM OUTSIDE using network
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
