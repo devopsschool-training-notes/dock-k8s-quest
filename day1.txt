@@ -433,12 +433,117 @@ How to come out of the container with exiting?
   185  docker attach 94cabc518b57
 
 ACCESS FROM OUTSIDE using network
+===================================================
+
+
+  166  docker run -d httpd
+  167  docker ps
+  168  docker run -d -p 80:80 httpd
+  169  docker ps
+  170  docker run -d -p 80:80 httpd
+  171  docker run -d -p 81:80 httpd
+  172  docker run -d -p 82:80 httpd
+
+
+https://devopsschool.com/tutorial/docker/commands/
+
+Docker Commands - Working with Containers
+Command	Description
+attach	Attach local standard input, output, and error streams to a running container
+
+cp	Copy files/folders between a container and the local filesystem
+  180  docker cp docker-archive-keyring-2.gpg fbf066bab1b3:/tmp/
+  181  docker exec fbf066bab1b3 ls /tmp/
+  182  rm -rf docker-archive-keyring-2.gpg
+  183  ls
+  184  docker cp fbf066bab1b3:/tmp/docker-archive-keyring-2.gpg .
+  185  ls
+
+
+create	Create a new container
+
+diff	Inspect changes to files or directories on a container's filesystem
+
+	Since container is created - 
+	- ADD
+	- EDIT
+	- DELETE
+  193  d
+  194  docker ps
+  195  docker diff fbf066bab1b3
+  196  history
 
 
 
+exec	Run a command in a running container
+
+inspect	Return low-level information on Docker objects
+  203  docker ps
+  204  docker inspect fbf066bab1b3
+  205  clear
+  206  docker images
+  207  docker inspect httpd
+  208  clear
+
+
+kill	Kill one or more running containers
+
+pause	Pause all processes within one or more containers
+
+port	List port mappings or a specific mapping for the container
+docker port 111f1f7915c9
+
+ps	List containers
+
+
+rename	Rename a container
+docker rename fbf066bab1b3 raju1
+
+restart	Restart one or more containers
+
+rm	Remove one or more containers
+
+run	Run a command in a new container
+
+start	Start one or more stopped containers
+
+stop	Stop one or more running containers
+
+unpause	Unpause all processes within one or more containers
+
+
+Docker Commands - Monitoring Containers
+
+Command	Description
+logs	Fetch the logs of a container
+docker logs fbf066bab1b3
+
+
+ps	List containers
+
+stats	Display a live stream of container(s) resource usage statistics
+  230  docker stats
+  231  docker stats fbf066bab1b3
+
+
+top	Display the running processes of a container
+  234  docker ps
+  235  ps -eaf | grep containerd
+  236  docker top fbf066bab1b3
+
+
+events	Get real time events from the server
+docker events
 
 
 
+Assignment
+===============================================================
+Write a post on bestDevOps.com
+
+Q1. - What is the use of "docker update" commands? with example and image
+Q2. - What is the use of "docker wait" commands? with example and image
+Q3. - List of Top 5 docker images from hub.docker.com and create a running container of it and try to use it.
 
 
 
