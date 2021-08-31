@@ -276,6 +276,54 @@ docker run -d -it --name tmptest --mount type=tmpfs,destination=/app nginx:lates
 Assignment - 
 List out number of storage/volume drivers supported by docker?
 
+=============================================================
+=============================================================
+
+How to share a docker images?
+
+Method 1 - using tar ball
+
+ 2282  clear
+ 2283  ls
+ 2284  cd rajesh/
+ 2285  ls
+ 2286  docker save -o rajesh1.tar rajesh1
+ 2287  ls
+ 2288  docker rmi rajesh1
+ 2289  docker images | grep rajesh1
+ 2290  clear
+ 2291  ls
+ 2292  docker load -i rajesh1.tar
+ 2293  docker images | grep rajesh1
+ 2294  history
+
+
+Method 2 - using registry (hub.docker.com)
+
+Step 1 - register and login at hub.docker.com
+Step 2 - create a repo at hub.docker.com = devopsschools/augtuesday
+Step 3 - $ docker login
+Step 4 - #Make sure that image name MUST match with a repo name.
+$ docker tag rajesh1 devopsschools/augtuesday
+Step 5 - $ docker push devopsschools/augtuesday
+Step 6 - docker logout
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
