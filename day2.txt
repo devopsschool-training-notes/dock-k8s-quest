@@ -46,14 +46,94 @@ What is Union Mounts and how it works? Explained with Images!
 
 
 All Layers in ONE Go ==== Using Dockerfile
+==========================================================
+- a file
+- INI FORMAT
+- Contains Lines
+- Each line is one INSTRUCTION. such as COPY, RUN, ADD, CMD, ENTRY
+- EACH LINE Create 1 LAYER
+- NEW LAYER is created from a Container of Previous Layer
+
+2 LINES INTO 1 LINES
+---------------------------
+RUN apt-get install git -y && apt-get install apache2 -y
+
+FROM ubuntu
+MAINTAINER Rajesh Kumar rajesh@devopsschool.com
+RUN apt-get update
+RUN apt-get install -y tzdata
+ARG DEBIAN_FRONTEND=noninteractive
+RUN apt-get install git -y 
+RUN apt-get install apache2 -y
 
 
+FROM ubuntu
+MAINTAINER Rajesh Kumar rajesh@devopsschool.com
+RUN touch /opt/rajesh1.txt
+RUN touch /opt/rajesh2.txt
+RUN touch /opt/rajesh3.txt
+--------------------------------------
 
 
+FROM	- BASE IMAGE
+MAINTAINER - WHO ARE YOU
+RUN - THIS WOULD RUN COMMND IN CONTAINER of PRE LAYER
+ARG - SET A VARIABLE for DOCKERFILE and RESUEM using ${varname}
+EXPOSE - Specifying information port for the container
+COPY - 
+ADD --> EXTRACT
+USER		set a container run time user.
+CMD		TO SET PID 1
+ENTRYPOINT	TO SET PID 1
+ENV
+VOLUME
+WORKDIR
 
+ 2093  mkdir rajesh
+ 2094  cd rajesh/
+ 2095  ls
+ 2096  vi dockerfile
+ 2097  docker build -t rajesh1 .
+ 2098  vi dockerfile
+ 2099  docker build -t rajesh1 .
+ 2100  docker images
+ 2101  clear
+ 2102  ls
+ 2103  vi doc2
+ 2104  docker build -t -f doc2 rajesh2 .
+ 2105  docker build -f doc2 -t rajesh2 .
+ 2106  cd /var/lib/docker/
+ 2107  clear
+ 2108  ls
+ 2109  find . -name rajesh*
+ 2110  docker ps
+ 2111  clear
+ 2112  history
 
+============================================
+Assignment
+-------------
+Q1. List out all INSTRUCTION statement of dockerfile and give one line explanation.
+Q2. Build all these 5 images and run container and observe the use cases of it.
+https://devopsschool.com/tutorial/docker/dockerfile/dockerfile-example-sample-lab.html
+Q3. Write a example dockerfile with 2 CMD, 2 ENTRYPOINT and 1 CMD/1ENTRYPOINT and write down a behaviour of it.
 
+CMD Vs ENTRYPOINT
+------------------------------------
+COMMON  
+- BOTH ARE BEING USED TO SET PID1
 
+DIFF
+- CMD can be replaced
+- ENTRYPOINT can not be replaced
+
+WHEN YOU PASS CMD to the ENTRYPOINT image. CMD would become param of ENTRYPOINT.
+
+Entrypoint === /user/loca/python 3.py
+CMD == ls
+
+RUN TIME == /user/loca/python 3.py ls
+---------------------------------------
 
 
 
