@@ -309,11 +309,67 @@ Step 5 - $ docker push devopsschools/augtuesday
 Step 6 - docker logout
 
 
+========================================================
+TYPES of Network supported in Docker
+---------
+bridge
+	HUMAN--->	HOST NETWORK <--- BRiDGE ---> Container Networl
+		
+
+
+host
+none
 
 
 
 
-
+ 2320  clear
+ 2321  docker ps -a
+ 2322  docker network ls
+ 2323  docker network rm kibana_network
+ 2324  docker network ls
+ 2325  ifconfig
+ 2326  clear
+ 2327  apt install net-tools
+ 2328  clear
+ 2329  ifconfig
+ 2330  docker network ls
+ 2331  docker inspect f6d4b67ffa52
+ 2332  clear
+ 2333  docker network create dev
+ 2334  docker network create qa
+ 2335  docker network ls
+ 2336  docker help run
+ 2337  clear
+ 2338  docker network ls
+ 2339  docker run -itd --net=dev ubuntu
+ 2340  docker run -itd --net=qa ubuntu
+ 2341  docker run -itd ubuntu
+ 2342  clear
+ 2343  docker ps
+ 2344  docker inspect 6a81b80a6bce
+ 2345  docker ps
+ 2346  clear
+ 2347  docker ps
+ 2348  docker inspect ab68afc0c55d
+ 2349  clear
+ 2350  docker ps
+ 2351  docker inspect 381f36aa4d0d
+ 2352  clear
+ 2353  docker network ls
+ 2354  docker ps
+ 2355  docker network connect dev 381f36aa4d0d
+ 2356  docker inspect 381f36aa4d0d
+ 2357  clear
+ 2358  ls
+ 2359  docker ps
+ 2360  docker network ls
+ 2361  docker network
+ 2362  docker network diconnect dev 381f36aa4d0d
+ 2363  clear
+ 2364  docker network disconnect dev 381f36aa4d0d
+ 2365  docker network ls
+ 2366  history
 
 
 
