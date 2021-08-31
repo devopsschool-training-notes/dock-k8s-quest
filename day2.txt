@@ -1,0 +1,62 @@
+3.109.132.180
+ubuntu
+ubuntu123
+-------------------------
+Layer
+- META LAYER - META INFO OF LAYER/IMAGE -/var/lib/docker/image
+- DATA LAYER - FILES of LAYER/IMAGE - /var/lib/docker/overlay2
+
+
+How to create an Image?
+---------------------------------
+Layer by Layer==== Using Exising container
+------------------------------------------------
+Image = ub+git+apache2
+           -----------
+		1 layer
+
+
+ 2069  docker run -itd ubuntu
+ 2070  docker ps
+ 2071  docker attach ec60610426d0
+ 2072  docker ps
+ 2073  docker commit -a"Rajesh kumar" -m"ub-up-git-ap" ec60610426d0 ub-up-git-ap
+ 2074  docker images
+ 2075  docker history ubuntu
+ 2076  docker history ub-up-git-ap
+ 2077  docker run -itd ubuntu
+ 2078  docker ps
+ 2079  docker exec d3593b1ea0c6 git
+ 2080  docker run -itd ub-up-git-ap
+ 2081  docker ps
+ 2082  docker exec 9902c696689d git
+
+Lab & Assignment
+------------------------------------------------
+What is Storage Driver and types of Storage Driver? Explained with Images.
+What is Docker Images and Exaplin in 10 bullet lines?
+Create one Image which have base as centos and with git - ntp - httpd.
+Create one Image which have base as ubuntu and with git - ntp - apache2.
+
+Offline Assignment - AFTER 5 PM
+===========================================
+What is SHA256 and how can you use it? Explained with Images!
+What is Union Mounts and how it works? Explained with Images!
+
+
+
+All Layers in ONE Go ==== Using Dockerfile
+
+
+
+
+
+
+
+
+
+
+
+
+
+
