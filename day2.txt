@@ -136,6 +136,157 @@ RUN TIME == /user/loca/python 3.py ls
 ---------------------------------------
 
 
+Docker Volume
+https://www.devopsschool.com/blog/understand-docker-volume-from-beginner-to-deep-dive-level/
+----------------------
+Prb - containers r EMPH*
+	- DATA IS ALSO GONE
+---------------------------
+Sol - docker volume
+--------------------------------
+Types of Volume
+-------------
+	volume	- /var/lib/docker/volumes
+	mntfs	- ANY PATH IN HOST MACHINE
+	tempfs  - Memory
+
+
+ 2152  docker ps -a
+ 2153  docker rud -itd ubuntu
+ 2154  clear
+ 2155  docker run -itd ubuntu
+ 2156  docker ps
+ 2157  docker exec 7dc41879cc90 touch /tmp/rajesh.txt
+ 2158  find . -name rajesh.txt
+ 2159  docker stop 7dc41879cc90
+ 2160  find . -name rajesh.txt
+ 2161  docker rm 7dc41879cc90
+ 2162  find . -name rajesh.txt
+ 2163  cd volumes/
+ 2164  pwd
+ 2165  clear
+ 2166  ls
+ 2167  clear
+ 2168  cd aedcdd949a68214349705d738e16a8322327846226a3c0887263bab3b71c4a33
+ 2169  ls
+ 2170  cd _data/
+ 2171  ls
+ 2172  cd ..
+ 2173  ls
+ 2174  cd ..
+ 2175  ls
+ 2176  cd 93132d1539cd6f5795743854b3946484ddab71d068c3e872e2349cea540bcabd
+ 2177  ls
+ 2178  cd _data/
+ 2179  ls
+ 2180  clear
+ 2181  ls
+ 2182  cd ..
+ 2183  ls
+ 2184  cd ..
+ 2185  ls
+ 2186  clear
+ 2187  cd 197cfa78ac873750655a921b4e53f6fe9a81c3cd4c20a50516459ecca66d89af
+ 2188  ls
+ 2189  cd _data/
+ 2190  ls
+ 2191  clear
+ 2192  cd
+ 2193  ls
+ 2194  docker volume
+ 2195  docker volume ls
+ 2196  ls
+ 2197  cd -
+ 2198  ls
+ 2199  cd ..
+ 2200  ls
+ 2201  celar
+ 2202  ls
+ 2203  cd ..
+ 2204  ls
+ 2205  docker volume ls
+ 2206  docker volume
+ 2207  docker volume prune
+ 2208  clear
+ 2209  ls
+ 2210  docker volume ls
+ 2211  docker volume
+ 2212  docker volume create dev
+ 2213  docker volume create qa
+ 2214  docker volume create rajeshg
+ 2215  ls
+ 2216  docker volume rm rajeshg
+ 2217  clear
+ 2218  ls
+ 2219  docker volume ls
+ 2220* l
+ 2221  docker volume
+ 2222  docker volume inspect dev
+ 2223  clear
+ 2224  ls
+ 2225  docker help create
+ 2226  clear
+ 2227  docker help run
+ 2228  clear
+ 2229  ls
+ 2230  docker run -itd -v dev:/tmp/dev ubuntu
+ 2231  docker ps
+ 2232  docker exec 06e6eabb3208 ls /tmp/
+ 2233  docker exec 06e6eabb3208 df -kh
+ 2234  docker exec 06e6eabb3208 touch /tmp/dev/ramukaka.txt
+ 2235  docker exec 06e6eabb3208 ls /tmp/dev/
+ 2236  ls
+ 2237  cd dev/_data/
+ 2238  ls
+ 2239  pwd
+ 2240  ls
+ 2241  clear
+ 2242  ls
+ 2243  docker exec 06e6eabb3208 ls /tmp/dev/
+ 2244  docker stop 06e6eabb3208
+ 2245  ls
+ 2246  docker rm 06e6eabb3208
+ 2247  ls
+ 2248  docker run -itd -v dev:/tmp/dev1 ubuntu
+ 2249  docker ps
+ 2250  docker exec 7c58892a4e2e ls /tmp/dev1
+ 2251  docker run -itd -v dev:/tmp/dev1 ubuntu
+ 2252  docker run -itd -v dev:/tmp/dev1 -v qa:/tmp/ramu  ubuntu
+
+ 2258  cd /opt/
+ 2259  ls
+ 2260  mkdir bkp
+ 2261  cd bkp/
+ 2262  l
+ 2263  pwd
+ 2264  docker run -itd -v /opt/bkp:/opt/raka ubuntu
+ 2265  ls
+ 2266  touch raj1
+ 2267  docker ps
+ 2268  docker exec 430997ca82f7 ls /opt/raka
+ 2269  docker exec 430997ca82f7 touch /opt/raka/rr
+ 2270  docker exec 430997ca82f7 ls /opt/raka
+ 2271  docker exec 430997ca82f7 touch /opt/raka/rrrrrrr
+
+
+
+docker run -d -it --name tmptest --mount type=tmpfs,destination=/app nginx:latest
+
+
+Assignment - 
+List out number of storage/volume drivers supported by docker?
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
