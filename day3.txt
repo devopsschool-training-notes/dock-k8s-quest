@@ -2,3 +2,72 @@ Write down 10 fearures of Kubernetes with image
 What are the components of Kubernetes master and explain each component's function?
 What are the components of Kubernetes worker and explain each component's function?
 What is Pod in kubernetes. Exaplin in 15 points with image as an example
+
+===================================================================================
+Master
+- API SERVER		POD -> Container -> Docker Image -> Google Registry
+- Etcd			POD -> Container -> Docker Image -> Google Registry
+- Controller Manager	POD -> Container -> Docker Image -> Google Registry
+- Schedular		POD -> Container -> Docker Image -> Google Registry
+- Kube proxy		POD -> Container -> Docker Image -> Google Registry
+-- network policy-weavenet POD -> Container -> Docker Image -> Google Registry
+- coreDNS 		POD -> Container -> Docker Image -> Google Registry
+
+- kubelet
+- Docker
+- Kubectl
+- kubeadm init 
+
+	
+
+Worker
+- kubelet
+- Docker
+- Kube proxy		POD -> Container -> Docker Image -> Google Registry
+- Kubectl
+- kubeadm join
+
+Workstation
+- Kubectl
+
+
+HARDWAY - 
+https://github.com/kelseyhightower/kubernetes-the-hard-way
+https://www.devopsschool.com/blog/setting-up-kubernetes-clusters-using-kubeadm-manual-way-in-rhel-7-centos7/
+https://www.devopsschool.com/blog/how-to-change-the-cgroup-driver-from-cgroupfs-systemd-in-docker/
+
+Master 
+65.0.131.108
+
+Your Kubernetes control-plane has initialized successfully!
+
+=====================WORKSTATION=======================================
+To start using your cluster, you need to run the following as a regular user:
+
+  mkdir -p $HOME/.kube
+  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+Alternatively, if you are the root user, you can run:
+
+  export KUBECONFIG=/etc/kubernetes/admin.conf
+
+=====================NETWORKING=======================================
+You should now deploy a pod network to the cluster.
+Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
+  https://kubernetes.io/docs/concepts/cluster-administration/addons/
+
+=====================WORKER=======================================
+Then you can join any number of worker nodes by running the following on each as root:
+
+kubeadm join 172.31.15.134:6443 --token pznr6w.za2d6vmdafix3g0e \
+        --discovery-token-ca-cert-hash sha256:a97ed71f203e20ca20d4230b90689723647c875b302ef67920e56078efc17804
+
+
+
+
+
+
+
+
+
