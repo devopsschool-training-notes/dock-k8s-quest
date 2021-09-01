@@ -1,0 +1,4 @@
+Write down 10 fearures of Kubernetes with image
+What are the components of Kubernetes master and explain each component's function?
+What are the components of Kubernetes worker and explain each component's function?
+What is Pod in kubernetes. Exaplin in 15 points with image as an example
