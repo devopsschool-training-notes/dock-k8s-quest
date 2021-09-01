@@ -24,6 +24,7 @@ Worker
 - kubelet
 - Docker
 - Kube proxy		POD -> Container -> Docker Image -> Google Registry
+-- network policy-weavenet POD -> Container -> Docker Image -> Google Registry
 - Kubectl
 - kubeadm join
 
@@ -36,8 +37,8 @@ https://github.com/kelseyhightower/kubernetes-the-hard-way
 https://www.devopsschool.com/blog/setting-up-kubernetes-clusters-using-kubeadm-manual-way-in-rhel-7-centos7/
 https://www.devopsschool.com/blog/how-to-change-the-cgroup-driver-from-cgroupfs-systemd-in-docker/
 
-Master 
-65.0.131.108
+Master  = WORKSTATION
+65.0.131.108 
 
 Your Kubernetes control-plane has initialized successfully!
 
@@ -64,10 +65,155 @@ kubeadm join 172.31.15.134:6443 --token pznr6w.za2d6vmdafix3g0e \
         --discovery-token-ca-cert-hash sha256:a97ed71f203e20ca20d4230b90689723647c875b302ef67920e56078efc17804
 
 
+==================================================================================================================
+How to setup workstation?
+
+kubectl
+	$USER_HOME/.kube/config
+	.kube/config
+	ENV_KUBECONFIG
+
+What is config?
+---------------------
+	YAML
+	
+Clustor(S):
+	Clustor1: http://ip:6443
+	Clustor2: http://ip:6443
+	Clustor3: http://ip:6443
+User(S):
+	User1: client + cert
+	User2: client + cert
+	User3: client + cert
+Context(s):
+	Context1 = Clustor1 + User1
+	Context2 = Clustor2 + User2
+	Context3 = Clustor3 + User3
+curr-content = Context1 OR Context2 OR Context3
 
 
 
+WORKER
+13.233.192.23
+
+=============================================================================
+==============================================================================
+What you want?
+----------------------------
+
+API SERVER---> 60 API Which you use.
+---------------------------------------
+POD
+------------------
+API 
+	GET POST PUT DELETE	
+	CRUD
+
+---------------------------------------
+	Create
+		CMD		
+			create 
+		YAML
+			create -f
+	READ
+		CMD
+			get
+			describe
+		YAML
+			get
+			describe
+	UPDATE
+		CMD
+			edit
+		YAML
+			apply -f
+	DELETE
+		CMD
+			delete
+		YAML
+			delete -f
+	
 
 
+   33  kubectl
+   34  kubectl get nodes
+   35  kubectl get pods
+   36  kubectl get pods --all-namespaces
+   37  kubectl api-resources
+   38  kubectl version
+   39  history
+
+---------------------------------------
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nodehelloworld.example.com
+  labels:
+    app: helloworld
+spec:
+  containers:
+  - name: devopsschool1
+    image: scmgalaxy/nginx-devopsschoolv1
+    ports:
+    - name: nginx-port
+      containerPort: 80
+
+ 51  pwd
+   52  mkdir rajesh
+   53  cd rajesh/
+   54  ls
+   55  pwd
+   56  vi pod1.yaml
+   57  kubectl get pods
+   58  kubectl create -f pod1.yaml
+   59  kubectl get pods
+   60  clear
+   61  kubectl get pods
+   62  kubectl get pods -o wide
+   63  curl http://10.44.0.1
+   64  clear
+   65  kubectl get pods
+   66  kubectl describe nodehelloworld.example.com
+   67  kubectl describe pod nodehelloworld.example.com
+   68  clear
+   69  kubectl get pods
+   70* kubectl edit p
+   71  kubectl describe pod nodehelloworld.example.com
+   72  clear
+   73  kubectl get pods --show-labels
+   74  kubectl get pods -h
+   75  clear
+   76  ls
+   77  kubectl -h
+   78  kubectl get -h
+   79  kubectl get pod -h
+   80  clear
+   81  ls
+   82  clear
+   83  ls
+   84  vi pod1.yaml
+   85  kubectl apply -f pod1.yaml
+   86  kubectl get pods --show-labels
+   87  kubectl  get pods
+   88  kubectl delete pod nodehelloworld.example.com
+   89  kubectl apply -f pod1.yaml
+   90  kubectl  get pods
+   91  clear
+   92  kubectl apply -f pod1.yaml
+   93  kubectl  get pods
+   94  kubectl delete -f pod1.yaml
+   95  kubectl  get pods
+   96  history
+
+
+----------------------------------
+
+kubectl taint node ip-172-31-15-134.ap-south-1.compute.internal node-role.kubernetes.io/master:NoSchedule-
+
+
+
+65.0.131.108 
+centos
+centos123
 
 
