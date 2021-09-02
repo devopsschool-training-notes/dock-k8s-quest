@@ -190,4 +190,84 @@ kubectl port-forward --address 0.0.0.0 pod/rajesh 8888:80
  1073  kubectl auth can-i craete node
  1074  kubectl auth can-i craete nodes
  1075  history
+================================================================
+
+If you want 1 POD -> many pod
+----------------------------
+ 1093  kubectl delete --all pods --grace-period 0 --force
+ 1094  clear
+ 1095  ls
+ 1096  kubectl get pods
+ 1097  ls
+ 1098  kubectl get rc
+ 1099  clear
+ 1100  ls
+ 1101  kubectl apply -f rc.yaml
+ 1102  kubectl get rc
+ 1103  kubectl get pods
+ 1104  kubectl describe pod rajesh-8t28q
+ 1105  clear
+ 1106  ls
+ 1107  kubectl get pods
+ 1108  kubectl get rc
+ 1109  vi rc.yaml
+ 1110  kubectl apply -f rc.yaml
+ 1111  kubectl get rc
+ 1112  kubectl edit rc rajesh
+ 1113  kubectl get rc
+ 1114  kubectl edit rc rajesh
+ 1115  kubectl get rc
+ 1116  clear
+ 1117  ls
+ 1118  kubectl
+ 1119  clear
+ 1120  kubectl scale -h
+ 1121  clear
+ 1122  kubectl scale --replicas=1 rc/rajesh
+ 1123  kubectl get rc
+ 1124  kubectl scale --replicas=5 rc/rajesh
+ 1125  kubectl get rc
+ 1126  kubectl get pods
+ 1127  clear
+ 1128  kubectl get pods
+ 1129  kubectl delete pod rajesh-8t28q rajesh-dcv27 rajesh-gsg6b
+ 1130  kubectl get pods
+
+
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  # Unique key of the ReplicationController instance
+  name: rajesh
+spec:
+  # 3 Pods should exist at all times.
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      # Run the nginx image
+      - name: nginx
+        image: scmgalaxy/nginx-devopsschoolv1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
