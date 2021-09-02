@@ -377,4 +377,32 @@ NAME         TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
 kubernetes   ClusterIP   10.96.0.1        <none>        443/TCP    24h
 rajesh-cs    ClusterIP   10.108.216.226   <none>        5678/TCP   7m32s
 [centos@ip-172-31-15-134 rajesh]$
+=============================================================
+
+test-115053083.ap-south-1.elb.amazonaws.com
+
+
+test123.devopsschool.com
+
+
+ 1277  kubectl apply -f pod1.yaml
+ 1278  kubectl apply -f pod2.yaml
+ 1279  kubectl get pods --show-labels
+ 1280  kubectl edit svc rajesh-np
+ 1281  kubectl describe svc rajesh-np
+ 1282  kubectl get svc
+ 1283  curl http://10.106.69.164:56788
+ 1284  curl http://10.106.69.164:5678
+ 1285  clear
+ 1286  kubectl create service loadbalancer rajesh-lb --tcp=5678:80
+ 1287  kubectl get svc
+ 1288  kubectl get pods --show-labels
+ 1289  kubectl edit svc rajesh-lb
+ 1290  kubectl get svc
+ 1291  curl http://10.108.38.72:5678
+
+
+kubectl create deployment my-dep --image=scmgalaxy/nginx-devopsschoolv1 --replicas=15
+kubectl expose deploy my-dep --port=80 --target-port=80 --type=LoadBalancer --name=rajesh
+
 
