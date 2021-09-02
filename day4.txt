@@ -1,0 +1,193 @@
+
+How to work with pod?
+--------------------------------------------------------
+How to use pod?
+-------------------------
+How to troubleshoot pod?
+----------------------------------------------
+Troubleshooting and Debugging Commands:
+  describe      Show details of a specific resource or group of resources
+  logs          Print the logs for a container in a pod
+  attach        Attach to a running container
+  exec          Execute a command in a container
+  port-forward  Forward one or more local ports to a pod
+  cp            Copy files and directories to and from containers
+  auth          Inspect authorization
+
+
+
+
+  # Return snapshot logs from pod nginx with only one container
+  kubectl logs nginx
+
+  # Return snapshot logs from pod nginx with multi containers
+  kubectl logs nginx --all-containers=true
+
+  # Return snapshot logs from all containers in pods defined by label app=nginx
+  kubectl logs -l app=nginx --all-containers=true
+
+  # Return snapshot of previous terminated ruby container logs from pod web-1
+  kubectl logs -p -c ruby web-1
+
+  # Begin streaming the logs of the ruby container in pod web-1
+  kubectl logs -f -c ruby web-1
+
+  # Begin streaming the logs from all containers in pods defined by label app=nginx
+  kubectl logs -f -l app=nginx --all-containers=true
+
+  # Display only the most recent 20 lines of output in pod nginx
+  kubectl logs --tail=20 nginx
+
+  # Show all logs from pod nginx written in the last hour
+  kubectl logs --since=1h nginx
+
+  # Show logs from a kubelet with an expired serving certificate
+  kubectl logs --insecure-skip-tls-verify-backend nginx
+
+  # Return snapshot logs from first container of a job named hello
+  kubectl logs job/hello
+
+  # Return snapshot logs from container nginx-1 of a deployment named nginx
+  kubectl logs deployment/nginx -c nginx-1
+
+
+
+
+  # Get output from running pod mypod; use the 'kubectl.kubernetes.io/default-container' annotation
+  # for selecting the container to be attached or the first container in the pod will be chosen
+  kubectl attach mypod
+
+  # Get output from ruby-container from pod mypod
+  kubectl attach mypod -c ruby-container
+
+  # Switch to raw terminal mode; sends stdin to 'bash' in ruby-container from pod mypod
+  # and sends stdout/stderr from 'bash' back to the client
+  kubectl attach mypod -c ruby-container -i -t
+
+
+
+
+
+
+
+  # Get output from running the 'date' command from pod mypod, using the first container by default
+  kubectl exec mypod -- date
+
+  # Get output from running the 'date' command in ruby-container from pod mypod
+  kubectl exec mypod -c ruby-container -- date
+
+  # Switch to raw terminal mode; sends stdin to 'bash' in ruby-container from pod mypod
+  # and sends stdout/stderr from 'bash' back to the client
+  kubectl exec mypod -c ruby-container -i -t -- bash -il
+
+  # List contents of /usr from the first container of pod mypod and sort by modification time
+  # If the command you want to execute in the pod has any flags in common (e.g. -i),
+  # you must use two dashes (--) to separate your command's flags/arguments
+  # Also note, do not surround your command and its flags/arguments with quotes
+  # unless that is how you would execute it normally (i.e., do ls -t /usr, not "ls -t /usr")
+  kubectl exec mypod -i -t -- ls -t /usr
+
+
+
+kubectl port-forward --address 0.0.0.0 pod/rajesh 8888:80
+
+
+  # Listen on ports 5000 and 6000 locally, forwarding data to/from ports 5000 and 6000 in the pod
+  kubectl port-forward pod/mypod 5000 6000
+
+
+  # Listen on port 8888 locally, forwarding to 5000 in the pod
+  kubectl port-forward pod/mypod 8888:5000
+
+  # Listen on port 8888 on all addresses, forwarding to 5000 in the pod
+  kubectl port-forward --address 0.0.0.0 pod/mypod 8888:5000
+
+  # Listen on port 8888 on localhost and selected IP, forwarding to 5000 in the pod
+  kubectl port-forward --address localhost,10.19.21.23 pod/mypod 8888:5000
+
+  # Listen on a random port locally, forwarding to 5000 in the pod
+  kubectl port-forward pod/mypod :5000
+
+
+
+
+
+  # Copy /tmp/foo_dir local directory to /tmp/bar_dir in a remote pod in the default namespace
+  kubectl cp /tmp/foo_dir <some-pod>:/tmp/bar_dir
+
+  # Copy /tmp/foo local file to /tmp/bar in a remote pod in a specific container
+  kubectl cp /tmp/foo <some-pod>:/tmp/bar -c <specific-container>
+
+  # Copy /tmp/foo local file to /tmp/bar in a remote pod in namespace <some-namespace>
+  kubectl cp /tmp/foo <some-namespace>/<some-pod>:/tmp/bar
+
+  # Copy /tmp/foo from a remote pod to /tmp/bar locally
+  kubectl cp <some-namespace>/<some-pod>:/tmp/foo /tmp/bar
+
+
+ 1012  vi pod1.yaml
+ 1013  kubectl apply -f pod1.yaml
+ 1014  kuebctl get pod
+ 1015  kubectl get pod
+ 1016  clear
+ 1017  kubectl describe pod rajesh
+ 1018  clear
+ 1019  kubectt logs rajesh
+ 1020  kubectl logs rajesh
+ 1021  kuebctl get pod rajesh -o wide
+ 1022  kubectl get pod rajesh -o wide
+ 1023  curl http://10.32.0.15
+ 1024  kubectl logs rajesh
+ 1025  curl http://10.32.0.15
+ 1026  kubectl logs rajesh
+ 1027  kubectl logs -h
+ 1028  clear
+ 1029  kubectl get pods rajesh
+ 1030  kubectl attach rajesh
+ 1031  kubectl attach -h
+ 1031  kubectl attach -h
+ 1032  hisotyr
+ 1033  history
+ 1034  clear
+ 1035  kubectl get pods rajesh
+ 1036  kubectl exec rajesh ls
+ 1037  kubectl exec rajesh df -kh
+ 1038  kubectl exec rajesh df
+ 1039  kubectl exec rajesh du -sh
+ 1040  kubectl exec rajesh du
+ 1041  kubectl exec rajesh 1du -sh`
+ 1042  kubectl exec rajesh `du -sh`
+ 1043  kubectl exec rajesh "du -sh"
+ 1044  kubectl exec rajesh 'du -sh'
+ 1045  kubectl exec rajesh du -k"-sh"
+ 1046  clearr
+ 1047  kubectl exec rajesh du
+ 1048  kubectl exec rajesh ls
+ 1049  clear
+ 1050  kubectl exec rajesh /bin/bash
+ 1051  kubectl exec -it  rajesh /bin/bash
+ 1052  kubectl exec -h
+ 1053  clear
+ 1054  kubectl port-forward -h
+ 1055  clear
+ 1056  kubectl port-forward --address 0.0.0.0 pod/rajesh 8888:80
+ 1057  kubectl port-forward -h
+ 1058  clear
+ 1059  ls
+ 1060  kubectl get pod rajesh
+ 1061  kubectl exec pod rajehs ls /tmp
+ 1062  kubectl exec pod rajesh ls /tmp
+ 1063  kubectl exec rajesh ls /tmp
+ 1064  ls
+ 1065  kubectl cp pod1.yaml rajesh:/tmp
+ 1066  kubectl exec rajesh ls /tmp
+ 1067  kubectl cp -h
+ 1068  clear
+ 1069  kubectl auth
+ 1070  kubectl auth can-i create pod
+ 1071  kubectl auth can-i delete pod
+ 1072  kubectl auth can-i delete node
+ 1073  kubectl auth can-i craete node
+ 1074  kubectl auth can-i craete nodes
+ 1075  history
+
