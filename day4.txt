@@ -325,6 +325,56 @@ $ curl http://ip-of-pod
  1180  clear
  1181  kubectl get pods
 
+=============================================================================
+When you create service - Scope of the service is neeed Only in the clsutor
+- ClustorIP
+
+When you create service - Scope of the service is neeed @ Port of each Node.
+- ClustorIP --> Exposing a Service @ Port of each Node.
+-------------------------------------------------------
+NodePort
+
+When you create service - Scope of the service is neeed @ OUTSIDE of the clustor with LB
+- ClustorIP --> Exposing a Service @ Port of each Node. --> Creating LB at Cloud
+-------------------------------------------------------
+LoadBalancer
 
 
+ 1231  kubectl apply -f pod1.yaml
+ 1232  kubectl apply -f pod2.yaml
+ 1233  kubectl get pods -o wide
+ 1234  curl http://10.36.0.1
+ 1235  curl http://10.44.0.1
+ 1236  kubectl create -h
+ 1237  clear
+ 1238  kubectl create service -h
+ 1239  kubectl create service clusterip -h
+ 1240  clear
+ 1241  kubectl create service clusterip rajesh-cs --tcp=5678:80
+ 1242  kubectl get svc
+ 1243  curl http://10.108.216.226:5678
+ 1244  kubectl describe svc rajesh-svc
+ 1245  kubectl describe svc rajesh-cs
+ 1246  kubectl get pods --show-lables
+ 1247  kubectl get pods --show-labels
+ 1248  kubectl edit svc rajesh-cs
+ 1249  kubectl describe svc rajesh-cs
+ 1250  kubectl get pods --show-labels
+ 1251  curl http://10.108.216.226:5678
+ 1252  kubectl edit svc rajesh-cs
+ 1253  kubectl describe svc rajesh-cs
+ 1254  kubectl get pods --show-labels
+ 1255  curl http://10.108.216.226:5678
+ 1256  wacth curl http://10.108.216.226:5678
+ 1257  watch curl http://10.108.216.226:5678
+ 1258  clear
+ 1259  history
+
+
+Assignment -
+[centos@ip-172-31-15-134 rajesh]$ kubectl get svc
+NAME         TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)    AGE
+kubernetes   ClusterIP   10.96.0.1        <none>        443/TCP    24h
+rajesh-cs    ClusterIP   10.108.216.226   <none>        5678/TCP   7m32s
+[centos@ip-172-31-15-134 rajesh]$
 
