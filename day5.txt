@@ -115,5 +115,110 @@ https://www.devopsschool.com/blog/persistentvolume-persistentvolumeclaim-volumes
 
 https://www.devopsschool.com/blog/kubernetes-persistentvolume-and-persistentvolumeclaim-using-nfs-volume-types/
 https://www.devopsschool.com/blog/setup-nfs-server-and-use-inside-a-kubernetes-pods-in-rhel-centos7/
+===========================================================
+helm
+-------------------
+
+apt	install - up - remo	debian	from apt repo
+yum	install - up - remo	rpm	from yum repo
+helm	install - up - remo	chart	from https://artifacthub.io/
+
+
+What is Chart?
+------
+Directory Structure
+	- collection of YAML
+			pod
+			rc	
+			rs
+			deploy
+			ns
+			svc
+			pv
+			pvc
+			sc
+			r
+			cr
+			sA
+			RB
+			CRB
+			
+
+How can i create a chart?
+==============================================
+docker-compose.
+----------------------------------------------------------------------
+its dev tool 
+	for what??? for running apps with ease.
+
+
+
+read
+	docker-compose.yaml
+	--------------------------
+	services:
+		web
+			build	dockerfile
+			image	imagename
+			env
+			port
+			net
+			vol	
+			
+		
+		db
+			build
+			image
+			env
+			port
+			net
+			vol	
+			
+
+
+docker-compose up -d
+
+docker-compose down
+
+
+version: '2'
+services:
+  wordpress:
+    image: wordpress:latest # https://hub.docker.com/_/wordpress/
+    ports:
+      - 0.0.0.0:80:80 # change ip if required
+    volumes:
+      - ./wp-app:/var/www/html # Full wordpress project
+      #- ./plugin-name/trunk/:/var/www/html/wp-content/plugins/plugin-name # Plugin development
+      #- ./theme-name/trunk/:/var/www/html/wp-content/themes/theme-name # Theme development
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_USER: root
+      WORDPRESS_DB_PASSWORD: password
+    depends_on:
+      - db
+    networks:
+      - wordpress-network
+  db:
+    image: mysql:latest # https://hub.docker.com/_/mysql/ - or mariadb https://hub.docker.com/_/mariadb
+    ports:
+      - 0.0.0.0:3306:3306 # change ip if required
+    volumes:
+      - ./wp-data:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_DATABASE: wordpress
+      MYSQL_ROOT_PASSWORD: password
+    networks:
+      - wordpress-network
+networks:
+  wordpress-network:
+      driver: bridge
+
+
+
+
+
+
 
 
