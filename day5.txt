@@ -1,0 +1,35 @@
+IP - 3.109.155.108
+centos
+centos123
+================================================
+Namespace
+------------------------------------
+
+ 1003  kubectl get ns
+ 1004  kubectl describe nd default
+ 1005* kubectl describe ns defaul
+ 1006  kubectl
+ 1007  kubectl api-resources
+ 1008  kubectl api-resources | grep quota
+ 1009  clear
+ 1010  kubectl get ns
+ 1011  kubectl get pods -n=kube-system
+ 1012  clear
+ 1013  kubectl create ns rajesh
+ 1014  kubectl get ns
+ 1015  history
+ 1016  clear
+ 1017  kubectl create deployment sabeesh --image=busybox -n=rajesh
+ 1018  kubectl get ppds
+ 1019  kubectl get pods
+ 1020  clear
+ 1021  kubectl get pods -n=rajesh
+ 1022  kubectl edit ns rajesh
+ 1023  kubectl delete ns rajesh
+ 1024  kubectl get ns
+
+=============================================================
+Assignment:
+Create a namespace with your name and assigne one dummy resourcesquota to it and deploy a app of mysql in your namespace.
+
+
