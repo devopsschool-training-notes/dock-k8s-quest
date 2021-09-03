@@ -216,8 +216,23 @@ networks:
       driver: bridge
 
 
+https://www.youtube.com/c/TheDevOpsSchool/channels
+https://www.youtube.com/channel/UCTkBkcq-a4pFfJ_9UO7kuvA
+https://www.youtube.com/channel/UC2srBvMPv9ISmdYmzE-j0TQ
+https://www.youtube.com/channel/UC2srBvMPv9ISmdYmzE-j0TQ
+https://www.devopsschool.com/blog/
+https://www.scmgalaxy.com/tutorials/
+https://devopsschool.com/kit/master-in-devops-engineering.html
+https://devopsschool.com/slides/
+https://devopsschool.com/pdf/	
+https://www.devopsschool.com/slide/
+https://www.devopsschool.com/blog/kubernetes-ingress-tutorials-with-examples-and-lab-using-nodeport/
 
+Review & Feedback
+----------------------
+https://goo.gl/maps/yi7yiFKknGXfJZ5h8
 
+rajesh@devopsschool.com
 
 
 
