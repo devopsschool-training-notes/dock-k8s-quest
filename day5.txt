@@ -31,5 +31,85 @@ Namespace
 =============================================================
 Assignment:
 Create a namespace with your name and assigne one dummy resourcesquota to it and deploy a app of mysql in your namespace.
+============================================================
+https://www.devopsschool.com/blog/understanding-authentication-authorization-in-kubernetes/
+----------------------------------------------------------
+Authentication and Authorization in Kubernetes?
+---------------------------------------------------------------
+Authentication - How to connect to a SYSTEM?
+- Certificate - HUMAN
+- Token - Node for Bootstrap
+- OpenID
+- Web Hook
+==========================================
+Create a user and get cert.
+----------------------------------
+
+HUMAN				CA BODY
+----------------------------------------------
+Rajesh				Master
+
+PVT ---> CSR ------------------> CRT
+	<-----------------------
+PVT + CRT
+---------
+AUTH of API 
+
+
+Authorization
+-------------------------------
+Node
+ABAC
+RBAC [ FOCUS ]
+Webhook
+===========================================
+Role Based access Control
+---------------------------------------
+WHAT RESOURCES|API GROUP -----WHAT ACCESS ------ WHAT USER|WHAT GROUP
+------------------------------------------		employee
+		ROLE	 
+			------------ROLE BINDING-----------------> user
+
+
+
+USER
+	HUMAN
+	serviceaccount
+
+When you assign USER|SA|GROUP Access to Namespace === Use Role
+When you assign USER|SA|GROUP Access to Entire Clustor === Use ClustorsRole
+
+When you add ROLE TO USER|SA|GROUP == RoleBinding
+When you add ClustorsRole TO USER|SA|GROUP == ClustorRoleBinding
+
+-----------------
+role
+clustorrole
+
+rolebinding
+clustorrolebinding
+
+serviceaccount
+
+
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: deployment-manager-binding
+  namespace: office
+subjects:
+- kind: User
+  name: employee
+  apiGroup: ""
+roleRef:
+  kind: Role
+  name: deployment-manager
+  apiGroup: ""
+
+
+https://www.devopsschool.com/blog/understanding-authentication-authorization-in-kubernetes/
+
+
+
 
 
